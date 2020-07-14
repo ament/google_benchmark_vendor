@@ -1,0 +1,78 @@
+cmake_minimum_required(VERSION 3.5)
+project(google_benchmark_vendor CXX)
+
+option(FORCE_BUILD_VENDOR_PKG
+  "Build google benchmark from source, even if system-installed package is available"
+  OFF)
+
+if(NOT FORCE_BUILD_VENDOR_PKG)
+  find_package(benchmark QUIET)
+endif()
+
+macro(build_benchmark)
+  set(extra_cmake_args)
+
+  if(DEFINED CMAKE_BUILD_TYPE)
+    list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
+  endif()
+
+  list(APPEND extra_cmake_args "-DBENCHMARK_ENABLE_TESTING=OFF")
+  list(APPEND extra_cmake_args "-DBUILD_SHARED_LIBS=ON")
+
+  if(DEFINED CMAKE_TOOLCHAIN_FILE)
+    list(APPEND extra_cmake_args "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
+    if(ANDROID)
+      if(DEFINED ANDROID_ABI)
+        list(APPEND extra_cmake_args "-DANDROID_ABI=${ANDROID_ABI}")
+      endif()
+      if(DEFINED ANDROID_CPP_FEATURES)
+        list(APPEND extra_cmake_args "-DANDROID_CPP_FEATURES=${ANDROID_CPP_FEATURES}")
+      endif()
+      if(DEFINED ANDROID_FUNCTION_LEVEL_LINKING)
+        list(APPEND extra_cmake_args "-DANDROID_FUNCTION_LEVEL_LINKING=${ANDROID_FUNCTION_LEVEL_LINKING}")
+      endif()
+      if(DEFINED ANDROID_NATIVE_API_LEVEL)
+        list(APPEND extra_cmake_args "-DANDROID_NATIVE_API_LEVEL=${ANDROID_NATIVE_API_LEVEL}")
+      endif()
+      if(DEFINED ANDROID_NDK)
+        list(APPEND extra_cmake_args "-DANDROID_NDK=${ANDROID_NDK}")
+      endif()
+      if(DEFINED ANDROID_STL)
+        list(APPEND extra_cmake_args "-DANDROID_STL=${ANDROID_STL}")
+      endif()
+      if(DEFINED ANDROID_TOOLCHAIN_NAME)
+        list(APPEND extra_cmake_args "-DANDROID_TOOLCHAIN_NAME=${ANDROID_TOOLCHAIN_NAME}")
+      endif()
+    endif()
+  else()
+    list(APPEND extra_cmake_args "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}")
+  endif()
+  list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}")
+
+  include(ExternalProject)
+  externalproject_add(benchmark-1.5.1
+    URL https://github.com/google/benchmark/archive/v1.5.1/benchmark-1.5.1.tar.gz
+    URL_MD5 91d2d9a824cab82c67a80ccce5b93218
+    TIMEOUT 600
+    CMAKE_ARGS
+      -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
+      ${extra_cmake_args}
+  )
+
+  # The external project will install to the build folder, but we'll install that on make install.
+  install(
+    DIRECTORY
+      ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install/
+    DESTINATION
+      ${CMAKE_INSTALL_PREFIX}
+  )
+endmacro()
+
+if(NOT benchmark_FOUND)
+  build_benchmark()
+endif()
+
+install(
+  FILES package.xml
+  DESTINATION share/${PROJECT_NAME}
+)
