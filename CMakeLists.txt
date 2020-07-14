@@ -72,11 +72,6 @@ if(NOT benchmark_FOUND)
   build_benchmark()
 endif()
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
-endif()
-
 install(
   FILES package.xml
   DESTINATION share/${PROJECT_NAME}
