@@ -50,6 +50,8 @@ macro(build_benchmark)
   list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}")
 
   include(ExternalProject)
+  find_package(Patch REQUIRED)
+
   externalproject_add(benchmark-1.5.1
     URL https://github.com/google/benchmark/archive/v1.5.1/benchmark-1.5.1.tar.gz
     URL_MD5 91d2d9a824cab82c67a80ccce5b93218
@@ -57,6 +59,8 @@ macro(build_benchmark)
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       ${extra_cmake_args}
+    PATCH_COMMAND
+      ${Patch_EXECUTABLE} -p1 -N < ${CMAKE_CURRENT_SOURCE_DIR}/thread_safety_attributes.patch
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
