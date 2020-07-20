@@ -77,6 +77,7 @@ if(NOT benchmark_FOUND OR "${benchmark_VERSION}" VERSION_LESS 1.5.0)
 elseif(benchmark_FOUND)
   # Ubuntu Focal has a packaging bug where libbenchmark_main has no symbols,
   # causing linker failures. I'm pretty sure it shouldn't be a static library.
+  # Details: https://bugs.launchpad.net/ubuntu/+source/benchmark/+bug/1887872
   get_target_property(_benchmark_main_type benchmark::benchmark_main TYPE)
   if(NOT "${_benchmark_main_type}" STREQUAL "SHARED_LIBRARY")
     build_benchmark()
