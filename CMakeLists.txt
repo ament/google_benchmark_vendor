@@ -20,6 +20,10 @@ macro(build_benchmark)
   list(APPEND extra_cmake_args "-DBUILD_SHARED_LIBS=ON")
 
   if(DEFINED CMAKE_TOOLCHAIN_FILE)
+    if(QNX)
+      # defined in toolchain file
+      set_qnx_external_project_options()
+    endif()
     list(APPEND extra_cmake_args "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
     if(ANDROID)
       if(DEFINED ANDROID_ABI)
@@ -50,7 +54,12 @@ macro(build_benchmark)
   list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}")
 
   include(ExternalProject)
-  find_package(Patch REQUIRED)
+
+  if(QNX)
+    find_host_package(Patch REQUIRED)
+  else()
+    find_package(Patch REQUIRED)
+  endif()
 
   externalproject_add(benchmark-1.5.1
     URL https://github.com/google/benchmark/archive/v1.5.1/benchmark-1.5.1.tar.gz
