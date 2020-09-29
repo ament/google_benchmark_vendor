@@ -12,7 +12,7 @@ endif()
 macro(build_benchmark)
   set(extra_cmake_args)
 
-  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.5.1")
+  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.5.2")
 
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
@@ -57,7 +57,7 @@ macro(build_benchmark)
 
   externalproject_add(benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}
     URL "https://github.com/google/benchmark/archive/v${GOOGLE_BENCHMARK_TARGET_VERSION}/benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}.tar.gz"
-    URL_MD5 91d2d9a824cab82c67a80ccce5b93218
+    URL_MD5 084b34aceaeac11a6607d35220ca2efa
     TIMEOUT 600
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
