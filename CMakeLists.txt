@@ -55,8 +55,12 @@ macro(build_benchmark)
   include(ExternalProject)
 
   externalproject_add(benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}
-    URL "https://github.com/google/benchmark/archive/v${GOOGLE_BENCHMARK_TARGET_VERSION}/benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}.tar.gz"
-    URL_MD5 084b34aceaeac11a6607d35220ca2efa
+    GIT_REPOSITORY https://github.com/google/benchmark.git
+    GIT_TAG v${GOOGLE_BENCHMARK_TARGET_VERSION}
+    GIT_CONFIG advice.detachedHead=false
+    # Suppress git update due to https://gitlab.kitware.com/cmake/cmake/-/issues/16419
+    # See https://github.com/ament/uncrustify_vendor/pull/22 for details
+    UPDATE_COMMAND ""
     TIMEOUT 600
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
