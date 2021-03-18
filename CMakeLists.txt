@@ -53,18 +53,21 @@ macro(build_benchmark)
   list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}")
 
   include(ExternalProject)
-  find_package(Patch REQUIRED)
 
   externalproject_add(benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}
-    URL "https://github.com/google/benchmark/archive/v${GOOGLE_BENCHMARK_TARGET_VERSION}/benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}.tar.gz"
-    URL_MD5 084b34aceaeac11a6607d35220ca2efa
+    GIT_REPOSITORY https://github.com/google/benchmark.git
+    GIT_TAG v${GOOGLE_BENCHMARK_TARGET_VERSION}
+    GIT_CONFIG advice.detachedHead=false
+    # Suppress git update due to https://gitlab.kitware.com/cmake/cmake/-/issues/16419
+    # See https://github.com/ament/uncrustify_vendor/pull/22 for details
+    UPDATE_COMMAND ""
     TIMEOUT 600
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       ${extra_cmake_args}
     PATCH_COMMAND
-      ${Patch_EXECUTABLE} -p1 -N < ${CMAKE_CURRENT_SOURCE_DIR}/thread_safety_attributes.patch &&
-      ${Patch_EXECUTABLE} -p1 -N < ${CMAKE_CURRENT_SOURCE_DIR}/soversion.patch
+      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn ${CMAKE_CURRENT_SOURCE_DIR}/thread_safety_attributes.patch &&
+      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn ${CMAKE_CURRENT_SOURCE_DIR}/soversion.patch
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
