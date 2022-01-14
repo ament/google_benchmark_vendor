@@ -2,6 +2,17 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.0.7 (2022-01-14)
+------------------
+* Update maintainers to Audrow Nash (`#18 <https://github.com/ament/google_benchmark_vendor/issues/18>`_)
+* Update google_benchmark to v1.5.3 (`#16 <https://github.com/ament/google_benchmark_vendor/issues/16>`_)
+  1. Change google_benchmark version from v1.5.2 to v1.5.3. Because v1.5.2
+  can not build with GCC 11
+  2. Removed shrink-tz-offset-size.patch because of this patch was merged in
+  google-benchmark repo.
+* Add changelog (`#15 <https://github.com/ament/google_benchmark_vendor/issues/15>`_)
+* Contributors: Audrow Nash, Homalozoa X, Ivan Santiago Paunovic
+
 0.0.6 (2021-04-12)
 ------------------
 * Shrink the size of the tz_offset variable. (`#13 <https://github.com/ament/google_benchmark_vendor/issues/13>`_)
