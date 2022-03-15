@@ -15,6 +15,7 @@
   <author email="scott@openrobotics.org">Scott K Logan</author>
 
   <buildtool_depend>cmake</buildtool_depend>
+  <buildtool_depend>git</buildtool_depend>
 
   <depend>benchmark</depend>
 
