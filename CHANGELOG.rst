@@ -2,8 +2,8 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2022-03-29)
+------------------
 * Add git buildtool dependency.
 * Contributors: Steven! Ragnarök
 
