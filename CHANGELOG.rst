@@ -2,6 +2,11 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add git buildtool dependency.
+* Contributors: Steven! Ragnarök
+
 0.1.0 (2022-03-28)
 ------------------
 * Use git hash for google_benchmark_vendor (`#20 <https://github.com/ament/google_benchmark_vendor/issues/20>`_)
