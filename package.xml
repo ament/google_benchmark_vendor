@@ -5,12 +5,13 @@
   <version>0.2.0</version>
   <description>This package provides Google Benchmark.</description>
 
-  <maintainer email="audrow@openrobotics.org">Audrow Nash</maintainer>
+  <maintainer email="scott@openrobotics.org">Scott K Logan</maintainer>
 
   <license>Apache License 2.0</license>  <!-- Both this package and Google Benchmark are ASL 2.0 -->
 
   <url type="website">https://github.com/google/benchmark</url>
 
+  <author email="audrow@openrobotics.org">Audrow Nash</author>
   <author email="michel@ekumenlabs.com">Michel Hidalgo</author>
   <author email="scott@openrobotics.org">Scott K Logan</author>
 
