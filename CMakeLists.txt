@@ -12,7 +12,7 @@ endif()
 macro(build_benchmark)
   set(extra_cmake_args)
 
-  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.6.1")
+  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.7.1")
 
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
@@ -56,7 +56,7 @@ macro(build_benchmark)
 
   externalproject_add(benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_REPOSITORY https://github.com/google/benchmark.git
-    GIT_TAG c05843a9f622db08ad59804c190f98879b76beba  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
+    GIT_TAG d572f4777349d43653b21d6c2fc63020ab326db2  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_CONFIG advice.detachedHead=false
     # Suppress git update due to https://gitlab.kitware.com/cmake/cmake/-/issues/16419
     # See https://github.com/ament/uncrustify_vendor/pull/22 for details
