@@ -68,7 +68,7 @@ macro(build_benchmark)
     PATCH_COMMAND
       ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn
         ${CMAKE_CURRENT_SOURCE_DIR}/thread_safety_attributes.patch
-        ${CMAKE_CURRENT_SOURCE_DIR}/unused_variable.patch
+        ${CMAKE_CURRENT_SOURCE_DIR}/e991355c02b93fe17713efe04cbc2e278e00fdbd.patch
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
