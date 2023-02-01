@@ -56,7 +56,7 @@ macro(build_benchmark)
 
   externalproject_add(benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_REPOSITORY https://github.com/google/benchmark.git
-    GIT_TAG c05843a9f622db08ad59804c190f98879b76beba  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
+    GIT_TAG 0d98dba29d66e93259db7daa53a9327df767a415  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_CONFIG advice.detachedHead=false
     # Suppress git update due to https://gitlab.kitware.com/cmake/cmake/-/issues/16419
     # See https://github.com/ament/uncrustify_vendor/pull/22 for details
@@ -68,7 +68,6 @@ macro(build_benchmark)
     PATCH_COMMAND
       ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn
         ${CMAKE_CURRENT_SOURCE_DIR}/thread_safety_attributes.patch
-        ${CMAKE_CURRENT_SOURCE_DIR}/e991355c02b93fe17713efe04cbc2e278e00fdbd.patch
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
