@@ -2,6 +2,17 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Actually update to 1.6.1. (`#25 <https://github.com/ament/google_benchmark_vendor/issues/25>`_)
+  We claimed we were, but in fact we were pinned to the 1.5.3 git hash.
+* Remove set but unused variable (`#24 <https://github.com/ament/google_benchmark_vendor/issues/24>`_)
+  Clang checks -Wunused-but-set-variable.
+  This fails the build with -Werror also enabled.
+* [rolling] Update maintainers - 2022-11-07 (`#22 <https://github.com/ament/google_benchmark_vendor/issues/22>`_)
+* Mirror rolling to main
+* Contributors: Audrow Nash, Chris Lalancette, Michael Carroll
+
 0.2.0 (2022-04-29)
 ------------------
 
