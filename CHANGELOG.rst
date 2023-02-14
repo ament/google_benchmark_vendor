@@ -2,8 +2,8 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.3.0 (2023-02-14)
+------------------
 * Actually update to 1.6.1. (`#25 <https://github.com/ament/google_benchmark_vendor/issues/25>`_)
   We claimed we were, but in fact we were pinned to the 1.5.3 git hash.
 * Remove set but unused variable (`#24 <https://github.com/ament/google_benchmark_vendor/issues/24>`_)
