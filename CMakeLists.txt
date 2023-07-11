@@ -56,7 +56,7 @@ macro(build_benchmark)
 
   externalproject_add(benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_REPOSITORY https://github.com/google/benchmark.git
-    GIT_TAG c05843a9f622db08ad59804c190f98879b76beba  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
+    GIT_TAG 0d98dba29d66e93259db7daa53a9327df767a415  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_CONFIG advice.detachedHead=false
     # Suppress git update due to https://gitlab.kitware.com/cmake/cmake/-/issues/16419
     # See https://github.com/ament/uncrustify_vendor/pull/22 for details
