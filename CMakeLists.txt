@@ -12,7 +12,7 @@ endif()
 macro(build_benchmark)
   set(extra_cmake_args)
 
-  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.6.1")
+  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.5.3")
 
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
@@ -66,7 +66,8 @@ macro(build_benchmark)
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       ${extra_cmake_args}
     PATCH_COMMAND
-      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn ${CMAKE_CURRENT_SOURCE_DIR}/thread_safety_attributes.patch
+      COMMAND ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn ${CMAKE_CURRENT_SOURCE_DIR}/thread_safety_attributes.patch
+      COMMAND ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn ${CMAKE_CURRENT_SOURCE_DIR}/0001-NFCI-Drop-warning-to-satisfy-clang-s-Wunused-but-set.patch
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
@@ -79,7 +80,7 @@ macro(build_benchmark)
   )
 endmacro()
 
-if(NOT benchmark_FOUND OR "${benchmark_VERSION}" VERSION_LESS 1.6.1)
+if(NOT benchmark_FOUND OR "${benchmark_VERSION}" VERSION_LESS 1.5.3)
   build_benchmark()
 elseif(benchmark_FOUND)
   # Ubuntu Focal and Jammy have a packaging bug where libbenchmark_main has no symbols,
