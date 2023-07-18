@@ -2,6 +2,11 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.2 (2023-07-18)
+------------------
+* Resolve Clang compilation issue with benchmark 1.5.3 (`#28 <https://github.com/ament/google_benchmark_vendor/issues/28>`_)
+* Contributors: Adam Seiwert
+
 0.1.1 (2022-03-29)
 ------------------
 * Add git buildtool dependency.
