@@ -12,7 +12,7 @@ endif()
 macro(build_benchmark)
   set(extra_cmake_args)
 
-  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.6.1")
+  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.8.3")
 
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
@@ -56,7 +56,7 @@ macro(build_benchmark)
 
   externalproject_add(benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_REPOSITORY https://github.com/google/benchmark.git
-    GIT_TAG 0d98dba29d66e93259db7daa53a9327df767a415  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
+    GIT_TAG 344117638c8ff7e239044fd0fa7085839fc03021  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_CONFIG advice.detachedHead=false
     # Suppress git update due to https://gitlab.kitware.com/cmake/cmake/-/issues/16419
     # See https://github.com/ament/uncrustify_vendor/pull/22 for details
@@ -80,7 +80,7 @@ macro(build_benchmark)
   )
 endmacro()
 
-if(NOT benchmark_FOUND OR "${benchmark_VERSION}" VERSION_LESS 1.6.1)
+if(NOT benchmark_FOUND OR "${benchmark_VERSION}" VERSION_LESS 1.8.3)
   build_benchmark()
 elseif(benchmark_FOUND)
   # Ubuntu Focal and Jammy have a packaging bug where libbenchmark_main has no symbols,
