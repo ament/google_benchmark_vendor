@@ -2,6 +2,9 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.5.0 (2024-04-16)
 ------------------
 * Update to 1.8.3. (`#29 <https://github.com/ament/google_benchmark_vendor/issues/29>`_)
