@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
   <name>google_benchmark_vendor</name>
-  <version>0.5.0</version>
+  <version>0.6.0</version>
   <description>This package provides Google Benchmark.</description>
 
   <maintainer email="scott@openrobotics.org">Scott K Logan</maintainer>
