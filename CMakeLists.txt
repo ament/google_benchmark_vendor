@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.13)
 project(google_benchmark_vendor CXX)
 
 option(FORCE_BUILD_VENDOR_PKG
@@ -12,7 +12,7 @@ endif()
 macro(build_benchmark)
   set(extra_cmake_args)
 
-  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.8.3")
+  set(GOOGLE_BENCHMARK_TARGET_VERSION "1.14.0")
 
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
@@ -56,7 +56,7 @@ macro(build_benchmark)
 
   externalproject_add(benchmark-${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_REPOSITORY https://github.com/google/benchmark.git
-    GIT_TAG 344117638c8ff7e239044fd0fa7085839fc03021  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
+    GIT_TAG f8d7d77c06936315286eb55f8de22cd23c188571  # v${GOOGLE_BENCHMARK_TARGET_VERSION}
     GIT_CONFIG advice.detachedHead=false
     # Suppress git update due to https://gitlab.kitware.com/cmake/cmake/-/issues/16419
     # See https://github.com/ament/uncrustify_vendor/pull/22 for details
