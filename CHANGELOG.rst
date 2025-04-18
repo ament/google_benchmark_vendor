@@ -2,6 +2,12 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.1 (2025-04-18)
+------------------
+* Bump minimum CMake version to 3.10 (`#35 <https://github.com/ament/google_benchmark_vendor/issues/35>`_)
+* Remove CODEOWNERS and mirror-rolling-to-main workflow. (`#31 <https://github.com/ament/google_benchmark_vendor/issues/31>`_)
+* Contributors: Chris Lalancette, mosfet80
+
 0.6.0 (2024-04-26)
 ------------------
 
