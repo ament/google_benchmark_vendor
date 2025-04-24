@@ -2,6 +2,9 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.0 (2025-04-24)
+------------------
+
 0.6.1 (2025-04-18)
 ------------------
 * Bump minimum CMake version to 3.10 (`#35 <https://github.com/ament/google_benchmark_vendor/issues/35>`_)
