@@ -2,8 +2,8 @@
 Changelog for package google_benchmark_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.1 (2026-01-21)
+------------------
 * Remove CODEOWNERS and mirror-rolling-to-main workflow. (`#31 <https://github.com/ament/google_benchmark_vendor/issues/31>`_) (`#32 <https://github.com/ament/google_benchmark_vendor/issues/32>`_)
   They are both outdated and both no longer serving their
   intended purpose.
